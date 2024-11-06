@@ -56,12 +56,7 @@ if __name__ == "__main__":
     print(args)
     input_path = args.input_path
     file_list = os.listdir(input_path)
-    """
-    & c:/Users/e1139781/Desktop/mimic/codes_v2.0/.venv/Scripts/python.exe "c:/Users/e1139781/Desktop/mimic/codes_v2.0/Data Processing Pipeline.py"
-    --input-path 'D:/Master Dataset/' --output-pkl-path 'Processed Dataset/processed_icu_data.pkl' 
-    --output-csv-path 'Processed Dataset/metadata.csv' --age-lower 18
-    --start-diff 0
-    """
+    
     print('Read patient ICU information from pickle files')
     if args.number:
         patient_icus = load_patient_ICU_objects(input_path,file_list[0:args.number])
