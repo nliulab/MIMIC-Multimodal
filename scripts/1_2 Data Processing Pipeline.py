@@ -26,9 +26,9 @@ parser.add_argument('--los-lower', type=int, default=0, help='Lower bound of pat
 
 ## data pre-processing
 parser.add_argument('--start-diff', type=int, default=None,
-                    help='Time difference between the start of information collection period and ICU admission time(positive/negative)')
+                    help='Time difference between the start of information collection period and ICU admission time(positive/negative) in hour')
 parser.add_argument('--end-diff', type=int, default=None,
-                    help='Time difference between the end of information collection period and ICU discharge time(positive only)')
+                    help='Time difference between the end of information collection period and ICU admission time(positive only)')
 parser.add_argument('--tabular-variables', nargs='+', 
                     default=['subject_id','hadm_id','stay_id','age','gender','race','marital_status','language',
                              'insurance'], help='List of tabular variables included')
@@ -56,7 +56,11 @@ if __name__ == "__main__":
     print(args)
     input_path = args.input_path
     file_list = os.listdir(input_path)
-    
+    """
+    --input-path 'D:/Master Dataset/' --output-pkl-path 'Processed Dataset/processed_icu_24h.pkl' 
+    --output-csv-path 'Processed Dataset/metadata_24h.csv' --age-lower 18
+    --start-diff 0 --end-diff 24
+    """
     print('Read patient ICU information from pickle files')
     if args.number:
         patient_icus = load_patient_ICU_objects(input_path,file_list[0:args.number])

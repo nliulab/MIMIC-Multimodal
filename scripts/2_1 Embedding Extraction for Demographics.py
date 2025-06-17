@@ -27,7 +27,7 @@ args = parser.parse_args()
 
 if __name__ == "__main__":
     
-    # --input-icu-path './Processed Dataset/processed_icu_24h.pkl' --input-metadata-path './Processed Dataset/metadata_24h.csv' --output-path 'Embeddings/'
+    # --input-icu-path './Data/processed_icu_24h.pkl' --input-metadata-path './Data/metadata_24h.csv' --output-path 'Embeddings/'
     
     print(args)
     input_icu_path = args.input_icu_path

@@ -333,11 +333,12 @@ def extract_outcome(icus_metadata,los_range,readmission_range):
         re_adm = 0
         subject_id = row['subject_id']
         intime = row['intime']
+        outtime = row['outtime']
         # Find all stays for the same patient after the current stay
         subsequent_stays = icus_metadata[(icus_metadata['subject_id'] == subject_id) & (icus_metadata['intime'] > intime)]
         # Check if any subsequent stay is within 30 days
         if not subsequent_stays.empty:
-            if any((subsequent_stays['intime'] - intime) <= pd.Timedelta(days=readmission_range)):
+            if any((subsequent_stays['intime'] - outtime) <= pd.Timedelta(days=readmission_range)):
                 re_adm = 1
         readmission.append(re_adm)
     icus_metadata['readmission'] = readmission
@@ -383,13 +384,13 @@ def process_all(patient_ICUs,age_lower,age_upper,drop_missing_modalities,los_low
                 continue
             # Reshape vital signs table
             processed_ICU = time_series_reshaping(processed_ICU,vital_signs_variables,ascending)
-            # Additional outcomes
-            metadata = extract_outcome(metadata,los_range,readmission_range)
             # Append
             processed_ICUs.append(processed_ICU)
             patients_metadata = pd.concat([patients_metadata,metadata],axis=0)
             # Update process bar
             pbar.update(1)
+        # Additional outcomes
+        patients_metadata = extract_outcome(patients_metadata,los_range,readmission_range)
         patients_metadata = patients_metadata.reset_index(drop=True)
     return processed_ICUs, patients_metadata         
 
