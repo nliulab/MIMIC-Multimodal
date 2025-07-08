@@ -23,5 +23,7 @@ The structure of this repository is detailed as follows:
 For data access and description, please visit: [https://mimic.mit.edu](https://mimic.mit.edu/)
 
 MIMIC-IV v2.2 [https://physionet.org/content/mimiciv/2.2](https://physionet.org/content/mimiciv/2.2/#files-panel)
-MIMIC-CXR https://physionet.org/content/mimic-cxr/2.0.0/#files-panel
-MIMIC-IV-Note https://physionet.org/content/mimic-iv-note/2.2/note/#files-panel
+
+MIMIC-CXR [https://physionet.org/content/mimic-cxr/2.0.0](https://physionet.org/content/mimic-cxr/2.0.0/#files-panel)
+
+MIMIC-IV-Note [https://physionet.org/content/mimic-iv-note/2.2/note](https://physionet.org/content/mimic-iv-note/2.2/note/#files-panel)
