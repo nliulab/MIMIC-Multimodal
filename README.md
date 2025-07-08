@@ -72,3 +72,34 @@ python "1_2 Data Processing Pipeline.py --input-path {input_path} --output-pkl-p
 <img src="figures/table1.png" width="85%"/>
 
 </div>
+
+For extracting representations from each data modality,
+**Demographics**
+~~~
+python "2_1 Embedding Extraction for Demographics.py" --input-icu-path {input_icu_path} --input-metadata-path {input_metadata_path} --output-path {output_path}
+~~~
+Key Arguments:
+- `input_icu_path` : Path to processed ICU stay data
+- `input_metadata_path` : Path to metadata table
+- `output_path ` : Output path for extracted embeddings
+
+**Time-series**
+~~~
+python "2_2 Embedding Extraction for Time-series.py" --input-icu-path {input_icu_path} --input-metadata-path {input_metadata_path} --output-path {output_path} --emb-technique {emb_technique}
+~~~
+Key Arguments:
+- `emb_technique ` : Select from three embedding techniques for time-series data: fixed time interval / gru / moment
+
+**Images**
+For extracting embeddings with CXR-Foundation, we recommend run `2_3_1 Embedding Extraction with CXR-Foundation.ipynb` with Google Colab
+For extracting embeddings with Swin Transformer,
+~~~
+python "2_3_2 Embedding Extraction with Swin Transformer.py" --input-icu-path {input_icu_path} --input-metadata-path {input_metadata_path} --output-path {output_path}
+~~~
+
+**Notes**
+~~~
+python "2_4 Embedding Extraction for Clinical Notes.py" --input-icu-path {input_icu_path} --input-metadata-path {input_metadata_path} --output-path {output_path} --emb-technique {emb_technique}
+~~~
+- `emb_technique ` : Select from two embedding techniques for free-text data: openai / radbert
+
