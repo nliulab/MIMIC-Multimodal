@@ -4,6 +4,7 @@ Benchmarking Foundation Models with Multimodal Public Electronic Health Records
 * [Introduction](#introduction)
 * [Structure](#structure)
 * [Data Requirements](#data-requirements)
+* [Workflow](#workflow)
 
 ## Introduction
 Foundation models have shown great promise in processing electronic health records (EHRs), offering the flexibility to handle diverse medical data modalities such as text, time series, and images. This repository presents a comprehensive benchmark framework designed to evaluate the predictive performance, fairness, and interpretability of foundation models—both as unimodal encoders and multimodal learners—using the publicly available MIMIC-IV database.
@@ -27,3 +28,14 @@ MIMIC-IV v2.2 [https://physionet.org/content/mimiciv/2.2](https://physionet.org/
 MIMIC-CXR [https://physionet.org/content/mimic-cxr/2.0.0](https://physionet.org/content/mimic-cxr/2.0.0/#files-panel)
 
 MIMIC-IV-Note [https://physionet.org/content/mimic-iv-note/2.2/note](https://physionet.org/content/mimic-iv-note/2.2/note/#files-panel)
+
+## Workflow
+The following sub-sections describe the workflow for our benchmark and how they should ideally be run.
+
+### 1. Data Processing Pipeline
+
+<div class="figure" style="text-align: center">
+
+<img src="figures/figure1A.png" width="70%"/>
+
+</div>
