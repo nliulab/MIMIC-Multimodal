@@ -5,6 +5,7 @@ Benchmarking Foundation Models with Multimodal Public Electronic Health Records
 * [Structure](#structure)
 * [Data Requirements](#data-requirements)
 * [Workflow](#workflow)
+* [Contact](#contact)
 
 ## Introduction
 Foundation models have shown great promise in processing electronic health records (EHRs), offering the flexibility to handle diverse medical data modalities such as text, time series, and images. This repository presents a comprehensive benchmark framework designed to evaluate the predictive performance, fairness, and interpretability of foundation models—both as unimodal encoders and multimodal learners—using the publicly available MIMIC-IV database.
@@ -118,6 +119,11 @@ python "3_1 Classification.py" --input-icu-path {input_icu_path} --input-metadat
 
 #### 2.2 Evaluating Foundation Models as Multimodal Learners
 For generating prompts for large vision-language models, run `4_1 Generate QA Dataset.ipynb`
+
+## Contact
+
+- Kunyu Yu (Email: <kunyu.yu@u.duke.nus.edu>)
+- Nan Liu (Email: <liu.nan@duke-nus.edu.sg>)
 
 
 
