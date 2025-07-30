@@ -10,8 +10,7 @@ Benchmarking Foundation Models with Multimodal Public Electronic Health Records
 ## Introduction
 Foundation models have shown great promise in processing electronic health records (EHRs), offering the flexibility to handle diverse medical data modalities such as text, time series, and images. This repository presents a comprehensive benchmark framework designed to evaluate the predictive performance, fairness, and interpretability of foundation models—both as unimodal encoders and multimodal learners—using the publicly available MIMIC-IV database.
 
-To support consistent and reproducible evaluation, we developed a standardized data processing pipeline that harmonizes heterogeneous clin-
-ical records into an analysis-ready format. We systematically compared eight foundation models, encompassing both unimodal and multimodal models, as well as domain-specific and general-purpose variants.
+To support consistent and reproducible evaluation, we developed a standardized data processing pipeline that harmonizes heterogeneous clinical records into an analysis-ready format. We systematically compared eight foundation models, encompassing both unimodal and multimodal models, as well as domain-specific and general-purpose variants.
 
 ## Structure
 The structure of this repository is detailed as follows:
@@ -45,7 +44,7 @@ For generating master dataset, run `1_1 Master Dataset Generation.ipynb`
 
 For generating benchmark dataset, we used
 ~~~
-python "1_2 Data Processing Pipeline.py --input-path {input_path} --output-pkl-path {output_pkl_path} --output-csv-path {output_csv_path} --age-lower 18 --start-diff 0 --end-diff 24
+python "1_2 Data Processing Pipeline.py" --input-path {input_path} --output-pkl-path {output_pkl_path} --output-csv-path {output_csv_path} --age-lower 18 --start-diff 0 --end-diff 24
 ~~~
 
 **Key Arguements**:
