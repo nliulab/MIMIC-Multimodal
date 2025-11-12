@@ -63,7 +63,9 @@ python "1_2 Data Processing Pipeline.py --input-path {input_path} --output-pkl-p
 In the updated pipeline, we integrated two additional clinical outcomes that are not directly stored in the raw MIMIC-IV tables. To obtain these variables, we queried Google BigQuery using the official SQL definitions provided by the MIMIC team. 
 
 The relevant concept queries are available in the MIMIC Code Repository:
+
  [https://github.com/MIT-LCP/mimic-code/tree/main/mimic-iv/concepts](https://github.com/MIT-LCP/mimic-code/tree/main/mimic-iv/concepts)
+ 
 The retrieved outcomes were merged into the metadata table of our benchmark dataset to ensure consistent and reproducible outcome generation.
 
 ### 2. Benchmark
