@@ -70,11 +70,6 @@ The retrieved outcomes were merged into the metadata table of our benchmark data
 
 ### 2. Benchmark
 
-<div class="figure" style="text-align: center">
-
-<img src="figures/figure1B.png" width="85%"/>
-
-</div>
 
 #### 2.1 Evaluating Foundation Models as Unimodal Encoders
 
