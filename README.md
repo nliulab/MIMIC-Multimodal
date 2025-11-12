@@ -80,6 +80,12 @@ The retrieved outcomes were merged into the metadata table of our benchmark data
 
 <div class="figure" style="text-align: center">
 
+<img src="figures/figure1B1.png" width="85%"/>
+
+</div>
+
+<div class="figure" style="text-align: center">
+
 <img src="figures/table1.png" width="85%"/>
 
 </div>
@@ -128,7 +134,14 @@ python "3_1 Classification.py" --input-icu-path {input_icu_path} --input-metadat
 - `outcome ` : Outcome of interest: in-hospital motality/ length of stay
 
 #### 2.2 Evaluating Foundation Models as Multimodal Learners
-For generating prompts for large vision-language models, run `4_1 Generate QA Dataset.ipynb`
+
+<div class="figure" style="text-align: center">
+
+<img src="figures/figure1B2.png" width="85%"/>
+
+</div>
+
+For generating patient profiles for large vision-language models, run `4_1 Generate QA Dataset.ipynb`
 
 ## Contact
 
