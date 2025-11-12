@@ -60,7 +60,7 @@ python "1_2 Data Processing Pipeline.py --input-path {input_path} --output-pkl-p
 
 **Addition of Two New Outcomes**
 
-In the updated pipeline, we integrated two additional clinical outcomes that are not directly stored in the raw MIMIC-IV tables. To obtain these variables, we queried Google BigQuery using the official SQL definitions provided by the MIMIC team. 
+In the updated pipeline, we integrated two additional clinical outcomes **invasive ventilation** and **sepsis onset** that are not directly stored in the raw MIMIC-IV tables. To obtain these variables, we queried Google BigQuery using the official SQL definitions provided by the MIMIC team. 
 
 The relevant concept queries are available in the MIMIC Code Repository:
 
