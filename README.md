@@ -66,7 +66,7 @@ The relevant concept queries are available in the MIMIC Code Repository:
 
  [https://github.com/MIT-LCP/mimic-code/tree/main/mimic-iv/concepts](https://github.com/MIT-LCP/mimic-code/tree/main/mimic-iv/concepts)
  
-The retrieved outcomes were merged into the metadata table of our benchmark dataset to ensure consistent and reproducible outcome generation.
+The retrieved outcomes were merged into the metadata table of our benchmark dataset to ensure consistent and reproducible experiments.
 
 ### 2. Benchmark
 
