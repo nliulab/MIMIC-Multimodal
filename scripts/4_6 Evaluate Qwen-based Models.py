@@ -1,5 +1,5 @@
 """
-script for evaluating Qwen2.5-VL-7B.ipynb
+script for evaluating Qwen2.5-VL-7B and Lingshu
 
 """
 # pip install git+https://github.com/huggingface/transformers accelerate
@@ -58,26 +58,37 @@ def generate_prompts(qa_dataset, outcome, image_dir):
     return prompts
 
 
-def build_model_and_processor(model_id,use_4bit = True,
-):
-    """Load Qwen2.5-VL model and processor with optional 4-bit quantization."""
+def build_model_and_processor(model_id,use_4bit = True):
+    """Load Qwen2.5-VL based models and processor"""
     quantization_config = None
     if use_4bit and torch.cuda.is_available():
         quantization_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16)
 
-    model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
-        model_id,
-        torch_dtype="auto",
-        device_map="auto",
-        quantization_config=quantization_config,
-    )
+    if model_id == "Qwen/Qwen2.5-VL-7B-Instruct":
+        model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+            model_id,
+            torch_dtype="auto",
+            device_map="auto",
+            quantization_config=quantization_config,
+        )
+    elif model_id == "lingshu-medical-mllm/Lingshu-7B":
+        model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+            model_id,
+            torch_dtype=torch.bfloat16,
+            attn_implementation="flash_attention_2",
+            device_map="auto",
+        )
+    
     processor = AutoProcessor.from_pretrained(model_id)
     return model, processor
 
 
-def run_inference(model,processor,prompts,max_new_tokens,
+def run_inference(model,model_id,processor,prompts,max_new_tokens,
                   output_dir,outcome,progress_save_every):
     """Run generation over prompts, saving periodic partial results."""
+    model_mapping = {"Qwen/Qwen2.5-VL-7B-Instruct":"qwen2.5vl",
+                     "lingshu-medical-mllm/Lingshu-7B":"lingshu"}
+
     os.makedirs(output_dir, exist_ok=True)
     answers = []
     nfiles = len(prompts)
@@ -100,12 +111,12 @@ def run_inference(model,processor,prompts,max_new_tokens,
                 generated_ids_trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False
             )
 
-            # Append single string (first item) or the list if batch > 1
+            # Append
             answers.append(output_text)
 
             pbar.update(1)
             if pbar.n % progress_save_every == 0 or pbar.n == nfiles:
-                partial_path = os.path.join(output_dir, f"qwen2.5vl_{outcome}_output_{pbar.n}.npz")
+                partial_path = os.path.join(output_dir, f"{model_mapping[model_id]}_{outcome}_output_{pbar.n}.npz")
                 np.savez(partial_path, array=np.array(answers))
                 print(f"Saved checkpoint: {partial_path}")
 
@@ -113,7 +124,7 @@ def run_inference(model,processor,prompts,max_new_tokens,
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Evaluate Qwen2.5-VL-7B over QA dataset")
+    parser = argparse.ArgumentParser(description="Evaluate Qwen2.5-VL based models over QA dataset")
     parser.add_argument("--data-dir", default="Data/", help="Directory containing dataset and images")
     parser.add_argument("--json-name", default="qa_dataset_test.json", help="Dataset JSON filename")
     parser.add_argument("--image-dir", default="Data/jpg_test/", help="Directory for images")
@@ -126,6 +137,8 @@ def main() -> None:
     args = parser.parse_args()
 
     json_path = os.path.join(args.data_dir, args.json_name)
+    model_mapping = {"Qwen/Qwen2.5-VL-7B-Instruct":"qwen2.5vl",
+                     "lingshu-medical-mllm/Lingshu-7B":"lingshu"}
 
     if not os.path.isfile(json_path):
         raise FileNotFoundError(f"Dataset JSON not found: {json_path}")
@@ -137,6 +150,7 @@ def main() -> None:
     model, processor = build_model_and_processor(args.model_id, use_4bit=not args.no_quant4bit)
     answers = run_inference(
         model,
+        args.model_id,
         processor,
         prompts,
         max_new_tokens=args.max_new_tokens,
@@ -145,7 +159,7 @@ def main() -> None:
         progress_save_every=args.progress_save_every,
     )
 
-    full_path = os.path.join(args.output_dir, f"qwen2.5vl_{args.outcome}_output.npz")
+    full_path = os.path.join(args.output_dir, f"{model_mapping[args.model_id]}_{args.outcome}_output.npz")
     np.savez(full_path, array=np.array(answers))
     print(f"Full results saved to {full_path}")
 
