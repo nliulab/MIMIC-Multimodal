@@ -137,6 +137,9 @@ python "3_1 Classification.py" --input-icu-path {input_icu_path} --input-metadat
 
 For generating patient profiles for large vision-language models, run `4_1 Generate QA Dataset.ipynb`
 
+**Evaluation scripts**
+- `4_2 Evaluate GPT4o-mini.py`: Evaluate GPT‑4o‑mini via OpenAI API
+
 ## Contact
 
 - Kunyu Yu (Email: <kunyu.yu@u.duke.nus.edu>)
