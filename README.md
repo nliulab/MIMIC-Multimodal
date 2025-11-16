@@ -139,9 +139,17 @@ For generating patient profiles for large vision-language models, run `4_1 Gener
 
 **Evaluation scripts**
 - `4_2 Evaluate GPT4o-mini.py`: Evaluate GPT‑4o‑mini via OpenAI API
-- `4_3 Evaluate LLaVa.py & 4_4 Evaluate LLaVa-Med.py`: Run LLaVA-v1.5-7B and LLaVa-Med
+- `4_3 Evaluate LLaVa.py & 4_4 Evaluate LLaVa-Med.ipynb`: Run LLaVA-v1.5-7B and LLaVa-Med
 - `4_5 Evaluate Gemma Models.py`: Support both Gemma3-4B and MedGemma‑4B (select with `--model-id`)
 - `4_6 Evaluate Qwen-based Models.py`: Support Qwen2.5‑VL‑7B‑Instruct and Lingshu‑7B
+
+### 3. Evaluation
+
+<div class="figure" style="text-align: center">
+
+<img src="figures/figure1C.png" width="85%"/>
+
+</div>
 
 ## Contact
 
