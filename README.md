@@ -151,6 +151,8 @@ For generating patient profiles for large vision-language models, run `4_1 Gener
 
 </div>
 
+`evaluation.py` contains the necessary functions to run evaluations
+
 ## Contact
 
 - Kunyu Yu (Email: <kunyu.yu@u.duke.nus.edu>)
